@@ -17,8 +17,8 @@ export default class KanbanAPI {
             content: content
         }
 
-        if (!colimn) {
-            throw new Error("Colimn does not exist.")
+        if (!column) {
+            throw new Error("Column does not exist.")
         }
 
         column.item.push(item);
