@@ -3,7 +3,9 @@ export default class kanban {
         this.root = root;
 
         KanbanAPI.columns().forEach(columns => {
-            // TODO: create an instance Column class
+            const columnView = new Column(column.id, column.title);
+
+            this.root.appendChild(columnView.element.root);
         });
     }
 
