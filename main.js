@@ -1,5 +1,5 @@
-import kanban from "./Kanban.js";
+import Kanban from "./Kanban.js";
 
-new kanban(
+new Kanban(
     document.querySelector(".kanban")
 );

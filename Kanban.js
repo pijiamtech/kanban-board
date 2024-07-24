@@ -1,11 +1,13 @@
-export default class kanban {
+import Column from "./Column.js";
+
+export default class Kanban {
     constructor(root) {
         this.root = root;
 
-        KanbanAPI.columns().forEach(columns => {
+        Kanban.columns().forEach(column => {
             const columnView = new Column(column.id, column.title);
 
-            this.root.appendChild(columnView.element.root);
+            this.root.appendChild(columnView.elements.root);
         });
     }
 
