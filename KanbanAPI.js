@@ -53,8 +53,8 @@ export default class KanbanAPI {
             const targetColumn = data.find(column => column.id == newProps.columnId);
 
             if (!targetColumn) {
-                throw new Error("Target column not found.");
-            }
+				throw new Error("Target column not found.");
+			}
 
             // Delete the item from it's current column
             currentColumn.item.splice(currentColumn.item.indexOf(item), 1);
