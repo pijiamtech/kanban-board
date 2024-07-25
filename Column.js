@@ -4,9 +4,21 @@ export default class Column {
 	constructor(id, title) {
 		this.elements = {};
 		this.elements.root = Column.createRoot();
-		this.elements.title = this.elements.root.querySelector("kanban__column-title");
+		this.elements.title = this.elements.root.querySelector(".kanban__column-title");
 		this.elements.items = this.elements.root.querySelector(".kanban__column-items");
 		this.elements.addItem = this.elements.root.querySelector(".kanban__add-item");
+
+
+		this.elements.root.dataset.id = id;
+		this.elements.title.textContent = title;
+
+		this.elements.addItem.addEventListener("click", () => {
+			// TODO : add item
+		});
+
+		KanbanAPI.getItem(id).forEach(item => {
+			this.renderItem(item);
+		});
     }
 
     static createRoot() {
@@ -21,5 +33,11 @@ export default class Column {
 				<button class="kanban__add-item" type="button">+ Add</button>
 			</div>
 		`).children[0];
+	}
+
+	renderItem(data) {
+		const item = new Item(data.id, data.content);
+
+		this.elements.items.appendChild(item.element.root);
 	}
 }
