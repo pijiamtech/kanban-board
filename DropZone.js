@@ -29,8 +29,13 @@ export default class DropZone {
             const droppedIndex = dropZoneInColumn.indexOf(dropZone)
             const itemId = Number(e.dataTransfer.getData("text/plain"))
             const droppedItemElement = document.querySelector(`[data-id="${itemId}"]`);
-            // const insertAfter = 
+            const insertAfter = dropZone.parentElement.classList.contains("kanban__item") ? dropZone.parentElement : dropZone;
+            
+            if (droppedItemElement.contains(dropZone)) {
+                return;
+            }
 
+            insertAfter.after(droppedItemElement)
             KanbanAPI.updateItem(itemId, {
                 columnId,
                 position: droppedIndex
